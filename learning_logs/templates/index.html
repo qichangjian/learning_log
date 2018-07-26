@@ -1,4 +1,8 @@
-<p>Learning Log</p>
-<p>Learning Log helps you keep track of your learning, for any topic you'relearning about.</p>
+{#子模板的第一行必须包含标签{% extends %}，让Django知道它继承了哪个父模板#}
+{% extends "base.html" %}
 
+{% block content%}
+  <p>Learning Log</p>
+  <p>Learning Log helps you keep track of your learning, for any topic you'relearning about.</p>
+{% endblock content%}
 

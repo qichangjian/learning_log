@@ -1,6 +1,10 @@
 eclipse.preferences.version=1
+encoding//learning_logs/forms.py=UTF-8
 encoding//learning_logs/models.py=UTF-8
 encoding//learning_logs/templates/base.html=UTF-8
+encoding//learning_logs/templates/edit_entry.html=UTF-8
 encoding//learning_logs/templates/index.html=UTF-8
+encoding//learning_logs/templates/new_topic.html=UTF-8
+encoding//learning_logs/templates/topic.html=UTF-8
 encoding//learning_logs/urls.py=UTF-8
 encoding//learning_logs/views.py=UTF-8

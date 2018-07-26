@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     
     #我的应用程序     应用程序添加到这个元组中
     'learning_logs',
+    'users',
 ]
 
 MIDDLEWARE = [

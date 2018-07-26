@@ -1,0 +1,50 @@
+﻿首次安装：
+1.建立虚拟环境：
+python -m venv ll_env
+
+2.安装virtualenv
+pip install --user virtualenv
+
+3.激活虚拟环境
+ll_env\Scripts\activate
+
+停止：deactivate
+
+4.安装Django
+pip install Django
+
+5.在Django中创建项目
+django-admin.py startproject learning_log
+
+6.创建数据库
+python manage.py migrate
+
+7.启动项目
+python manage.py runserver
+
+8.Django管理网站
+创建超级管理用户
+python manage.py createsuperuser
+
+9.Django shell 交互式shell
+python manage.py shell
+
+10.创建一个文件夹存templates放html
+
+再次打开
+1.激活虚拟环境
+ll_env\Scripts\activate
+
+2.打开项目
+python manage.py startapp learning_logs
+
+3.让Django修改数据库
+python manage.py makemigrations learning_logs
+迁移项目
+python manage.py migrate
+
+注意：每当修改管理的数据时，都采取如下三个步骤：
+修改models.py
+对learning_logs调用makemigrations；
+让Django迁移项目
+
