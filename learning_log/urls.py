@@ -22,7 +22,7 @@ from django.urls.conf import re_path
 urlpatterns = [ #变量urlpatterns包含项目中的应用程序的URL
     path('admin/', admin.site.urls), #处的代码包含模块admin.site.urls，该模块定义了可在管理网站中请求的所有URL。
     re_path('', include('learning_logs.urls')),
-    
+    re_path('users/',include('users.urls'))
 
 #     path('index',learn_view.index),
 #     path('index1/',learn_view.index1),

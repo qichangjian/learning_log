@@ -1,11 +1,14 @@
 #coding=UTF-8
+from django.contrib.auth.models import User
 from django.db import models
+
 
 # Create your models here.定义模型
 class Topic(models.Model):   #创建了一个名为Topic的类，它继承了Model——Django中一个定义了模型基本功能的类。
     """用户学习的"""
     text = models.CharField(max_length=200) #属性text是一个CharField——由字符或文本组成的数据
     date_added = models.DateTimeField(auto_now_add=True) #属性date_added是一个DateTimeField——记录日期和时间的数据
+    owner = models.ForeignKey(User,on_delete=models.CASCADE)
     
     def __str__(self): #我们需要告诉Django，默认应使用哪个属性来显示有关主题的信息。Django调用方法__str__()来显示模型的简单表示
         """返回模型的字符串表示"""

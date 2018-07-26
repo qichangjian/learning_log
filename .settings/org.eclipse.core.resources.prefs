@@ -8,3 +8,6 @@ encoding//learning_logs/templates/new_topic.html=UTF-8
 encoding//learning_logs/templates/topic.html=UTF-8
 encoding//learning_logs/urls.py=UTF-8
 encoding//learning_logs/views.py=UTF-8
+encoding//users/templates/login.html=UTF-8
+encoding//users/urls.py=UTF-8
+encoding//users/views.py=UTF-8
