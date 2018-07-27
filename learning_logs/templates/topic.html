@@ -1,24 +1,30 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% block header %}
+	<h2>Topic:{{ topic }}</h2>
+{% endblock header %}
 
-  <p>Topic:{{ topic }}</p>
-  <p>Entries:</p>
-  <p>
-  	<a href="{% url 'learning_logs:new_entry' topic.id %}">Add new entry</a>
-  </p>
-  {% for entry in entries %}
-    <li>
-      <p>{{ entry.date_added|date:'M d,Y H:i' }}</p>
-      {# 过滤器linebreaks将包含换行符的长条目转换为浏览器能够理解的格式，以免显示为一个不间断的文本块 #}
-      <p>{{ entry.text|linebreaks }}</p>
-      <p>
-        <a href="{% url 'learning_logs:edit_entry' entry.id %}">edit entry</a>
-      </p>
-    </li>
-  {% empty %}
-    <li>
-      There are no entries for this topic yet.
-    </li>  
-  {% endfor %}
+{% block content %}
+	<p>
+ 	 	<a href="{% url 'learning_logs:new_entry' topic.id %}">Add new entry</a>
+	</p>
+	{% for entry in entries %}
+    <div class="panel panel-default">
+   		<div class="panel-heading">
+	        <h3>
+	        	{{ entry.date_added|date:'M d,Y H:i' }}
+		        <small>
+		     	    <a href="{% url 'learning_logs:edit_entry' entry.id %}">edit entry</a>
+		        </small>
+	         </h3>
+         </div>
+        {# 过滤器linebreaks将包含换行符的长条目转换为浏览器能够理解的格式，以免显示为一个不间断的文本块 #}
+        <div class="panel-body">
+        	{{ entry.text|linebreaks }}
+        </div>  
+    </div>
+    <!-- panel :创建了一个面板式div元素其中面板标题div包含条目的创建日期以及用于编辑条目的链接 small使其比时间戳小些.其中包含条目的实际文本-->
+    {% empty %}
+   		There are no entries for this topic yet.  
+    {% endfor %}
 {% endblock content %}

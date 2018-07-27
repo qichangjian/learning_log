@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    #第三方应用程序
+    'bootstrap3',
+    
     #我的应用程序     应用程序添加到这个元组中
     'learning_logs',
     'users',
@@ -123,5 +126,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-#my setting
-LOGIN_URL = '/users/login/'
+#我的设置
+LOGIN_URL = '/users/login/'  #登录路径
+
+#django-bootstrap3设置
+BOOTSTRAP3 = {
+    'include_jquery': True,  #需要让django-bootstrap3包含jQuery，这是一个JavaScript库，让你能够使用Bootstrap模板提供的一些交互式元素
+    }
+
+
+

@@ -1,23 +1,51 @@
-{% comment %}
-		模板标签，它是用大括号和百分号（% %）表示的。
-		模板标签是一小段代码，生成要在网页中显示的信息。
-		在这个实例中，模板标签% url 'learning_logs:index' 
-		生成一个URL，该URL与learning_logs/urls.py中定义的名为index的URL模式匹配（见）。在这
-		个示例中，learning_logs是一个命名空间，而index是该命名空间中一个名称独特的URL模式。
-{% endcomment %}
-<p>
-  <a href="{% url 'learning_logs:index' %}">Learning Log</a>
-  <a href="{% url 'learning_logs:topics' %}">Topics</a>
-  
-  {# ，每个模板都可使用变量user，这个变量有一个is_authenticated属性：如果用户已登录，该属性将为True，否则为False。  #}
-  {% if user.is_authenticated %}
-    Hello, {{ user.username }}.
-    <a href="{% url 'users:logout' %}">log out</a>
-  {% else %}
-    <a href="{% url 'users:register' %}">register</a>
-    <a href="{% url 'users:login' %}">log in</a>
-  {% endif %}
-</p>
-{#     一对块标签 这个块名为content，是一个占位符，其中包含的信息将由子模板指定。#}
-  {% block content %}
-  {% endblock content %}
+{% load bootstrap3 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Learning Log</title>
+{% bootstrap_css %}
+{%bootstrap_javascript %}
+</head>
+<body>
+	<!-- {% comment %} 模板标签，它是用大括号和百分号（% %）表示的。 模板标签是一小段代码，生成要在网页中显示的信息。
+	在这个实例中，模板标签% url 'learning_logs:index'
+	生成一个URL，该URL与learning_logs/urls.py中定义的名为index的URL模式匹配（见）。在这
+	个示例中，learning_logs是一个命名空间，而index是该命名空间中一个名称独特的URL模式。 {% endcomment %} -->
+	<!-- Static navbar -->
+	<nav class="navbar navbar-default navbar-static-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"></button>
+				<a class="navbar-brand" href="{% url 'learning_logs:index' %}">Learning Log</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="{% url 'learning_logs:topics' %}">Topics</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<!-- {#，每个模板都可使用变量user，这个变量有一个is_authenticated属性：如果用户已登录，该属性将为True，否则为False。#} -->
+					{% if user.is_authenticated %}
+					<li><span>Hello, {{ user.username }}</span></li>
+					<li><a href="{% url 'users:logout' %}">log out</a></li>
+					{% else %}
+					<li><a href="{% url 'users:register' %}">register</a></li>
+					<li><a href="{% url 'users:login' %}">log in</a></li>
+					{% endif %}
+				</ul>
+			</div>
+	</nav>
+	<!--{# 一对块标签 这个块名为content，是一个占位符，其中包含的信息将由子模板指定。#}  -->
+	<div class="container">
+	<div class="page-header">
+		{% block header %}{% endblock header %}
+	</div>
+	<div>
+			{% block content %}{% endblock content %}
+		</div>
+	</div>
+	<!-- /container -->
+</body>
+</html>
